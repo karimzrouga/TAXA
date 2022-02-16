@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Trips
+{% endblock %}
+{% block Header %}
+	<header class="header">
+		{% block courasel %}
+			<div class="header-bar">
+				<img src="{{ asset('./img/logo.png') }}" class="logo" alt="logo"/>
+				<div class="header-btns">
+					<div class="nav-btn open">
+						<i class="fas fas fa-bars"></i>
+					</div>
+					<div class="nav-btn close hide">
+						<i class="fas fas fa-window-close"></i>
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+		<ul class="links">
+				{% if app.user %}
+					<li>
+						<a class="single-link" href="{{path('admin')}}">
+							<strong>{{app.user.username}}</strong>
+							<img src="{{ asset('./img/'~ app.user.image ) }}" style=" width: 50px;
+																								  height: 50px;
+																								  border-radius: 50%;
+								
+																								  object-fit: cover;" alt={{app.user.image }}/>
+
+						</a>
+					</li>
+				{% endif %}
+				<li>
+					<a class="single-link" href="{{path('places_index')}}">Places</a>
+				</li>
+				<li>
+					<a class="single-link" href="{{path('adventures_index')}}">Advetures</a>
+				</li>
+				<li>
+					<a class="single-link" href="{{path('trip_list')}}">Trips</a>
+				</li>
+				<li>
+					<a class="single-link" href="{{path('hotels_index')}}">Hotels</a>
+				</li>
+				<li>
+				<a class="single-link" href="{{path('blog',{add:'false' })}}">blogs</a>
+				</li>
+				<li>
+					<a class="single-link" href="{{path('contact')}}">contact</a>
+				</li>
+					{% if  app.user == null %}
+				<li>
+					<a class="single-link" href="{{path('app_login')}}">se connecter	<i class="far fa-user-circle"></i></a>
+				
+				</li>
+					{% endif %}
+    
+			</ul>
+	</header>
+	<div class="banner">
+		<h1 class="banner-title">taxa Trips</h1>
+	</div>
+{% endblock %}
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div
+		class="container">
+
+
+		<!-- trips section -->
+		<section class="trips center">
+			<div class="section-header"></div>
+			<div class="flexbox-parent">
+				{% for trip in trips %}
+					<article class="flexbox-child single-trip">
+						<div class="img-container">
+							<img src="{{ asset('./img/' ~ trip.image) }}" class="trips-img" alt=""/>
+						</div>
+						<div class="info">
+							<div class="single-info">
+								<span>
+									<i class="fas fa-paper-plane"></i>
+								</span>
+								stockholm
+							</div>
+							<div class="single-info">
+								<span>
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+								{{trip.duree}}
+							</div>
+						</div>
+						<p class="title">
+							{{trip.titre}}</p>
+						<p class="subtitle">
+							{{trip.description}}
+						</p>
+						<a href="{{path('reservation_detail',{id: trip.id})}}">Réservation</a>
+
+						<a href="{{path('trip_detail',{id: trip.id})}}">read more</a>
+						<div class="date">
+							{{trip.date.format('d/m/Y')}}
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		</section>
+		<!-- end of trips section -->
+	</div>
+{% endblock %}

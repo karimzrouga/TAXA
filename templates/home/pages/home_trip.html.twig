@@ -1,0 +1,58 @@
+<section class="book">
+	<div class="book-info">
+		<h1 class="section-title">get ready for real time adventure</h1>
+		<p class="black-subtitle">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
+							          assumenda eaque tempore nam quod enim atque magnam aliquid blanditiis,
+							          accusantium eveniet repudiandae deleniti, consequatur mollitia ipsum
+							          aspernatur ab, totam reprehenderit.
+		</p>
+		<a href="{{path('trip_list')}}" class="book-btn">book a trip</a>
+	</div>
+	<img class="book-img" src="{{ asset('./img/cta-img.png') }}" alt=""/>
+</section>
+<!-- end of book a trip section -->
+
+<!-- trips section -->
+<section class="trips center">
+	<div class="section-header">
+		<p class="section-info">we're offering these popular services</p>
+		<h1 class="section-title">famous trips packages</h1>
+		<div class="section-line"></div>
+	</div>
+	<div class="flexbox-parent">
+		{% for trip in trips|slice(0, 3) %}
+			<article class="flexbox-child single-trip">
+				<div class="img-container">
+					<img src="{{ asset('./img/' ~ trip.image) }}" class="trips-img" alt=""/>
+				</div>
+				<div class="info">
+					<div class="single-info">
+						<span>
+							<i class="fas fa-paper-plane"></i>
+						</span>
+						stockholm
+					</div>
+					<div class="single-info">
+						<span>
+							<i class="fas fa-calendar-alt"></i>
+						</span>
+						{{trip.duree}}
+					</div>
+				</div>
+				<p class="title">
+					{{trip.titre}}</p>
+				<p class="subtitle">
+					{{trip.description}}
+				</p>
+				<a href="{{path('reservation_detail',{id: trip.id,type:'trip'})}}">Réservation</a>
+				<a href="{{path('trip_detail',{id: trip.id})}}">read more</a>
+				<div class="date">
+					{{trip.date.format('d/m/Y')}}
+				</div>
+			</article>
+		{% endfor %}
+
+
+	</div>
+</section>

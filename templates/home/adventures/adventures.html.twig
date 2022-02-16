@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}adventures
+{% endblock %}
+
+{% block body %}
+	<div
+		class="container">
+
+
+		<!-- trips section -->
+		<section class="trips center">
+			<div class="section-header"></div>
+			<div class="flexbox-parent">
+				{% for adventure in adventures %}
+					<article class="flexbox-child single-service">
+						<p class="title">{{adventure .titre}}</p>
+
+
+						<img src="{{ asset('./img/' ~ adventure.image) }}" class="services-img" alt=""/>
+						<p class="subtitle">
+							{{adventure .description}}
+						</p>
+
+				<a href="{{path('advreservation_detail',{id: adventure.id,type:'adv' })}}">Participer</a>
+					</article>
+				{% endfor %}
+			</div>
+		</section>
+		<!-- end of trips section -->
+	</div>
+
+
+</div>{% endblock %}

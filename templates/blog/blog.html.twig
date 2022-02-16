@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Blog
+{% endblock %}
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="{{ asset('./css/style.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('./css/blog.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('./css/blogs.css') }}"/>
+{% endblock %}
+{% block banner %}
+	<div style="min-height: calc(100vh - 72px);
+																								  background: url(../img/185289.jpg) center/cover no-repeat;
+																								  display: flex;
+																								  flex-direction: column;
+																								  text-align: center;
+																								  justify-content: center;">
+		<h3 class="banner-info">plan a trip to santorni village</h3>
+		<h1 class="banner-title">Taxa BLogs</h1>
+	</div>
+{% endblock  %}
+{% block body %}
+	<div>
+		{% if add== false %}
+			<button style="
+																															color: white !important;
+																																			top:80%;
+																																	       left:43%;
+																																	       width:100px;
+																																	       height:40px;
+																																	       position: absolute;
+					
+																																			font-size: 16px;
+																																	       z-index: 2;
+																																	       background: #008CBA; ">
+				<a class="" href="{{path('blog',{add:'true' })}}">
+					Add<i class="fas fa-plus-circle"></i>
+				</a>
+			</button>
+		{% endif %}
+		{% if add %}
+			<div class="container">
+				<div class="dropdown-menu">
+					<div class="px-4 py-3">
+						{{ form_start(form) }}
+						<div class="form-group">
+
+							{{ form_row(form.image) }}
+						</div>
+						<div class="form-group">
+
+							<br/>
+							{{ form_row(form.description) }}
+						</div>
+
+						<button type="submit">save
+						</button>
+						<button>
+							<a href="{{path('blog',{add:'false' })}}">Cansel</a>
+						</button>
+					</div>
+
+				</div>
+			</div>
+		{% endif %}
+		<div class="container">
+
+			{% for post in postes %}
+				<div class="card">
+					<div class="card__header">
+						<img src={{ asset('./img/' ~ post.image) }} alt="card__image" class="card__image" width="600">
+					</div>
+					<div class="card__body">
+
+						<p>{{post.description}}</p>
+					</div>
+					<div class="card__footer">
+						<div class="user">
+
+
+							<img src={{ asset('./img/' ~ post.user|split('+')[1]) }} alt="user__image" style=" width: 50px;
+																																								  height: 50px;
+																																								  border-radius: 50%;
+								
+																																								  object-fit: cover;">
+
+							<div class="user__info">
+								<h5>{{post.user|split('+')[0]}}</h5>
+								<small>{{post.date.format('d/m/Y')}}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

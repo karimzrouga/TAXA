@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block body %}
+	<!-- start of services section -->
+	{{ include('home/pages/home_adventures.html.twig',{'adventure': adventure})  }}
+	<!-- end of services section -->
+
+	<!-- book a trip section -->
+	{{ include('home/pages/home_trip.html.twig',{'trips': trips})}}
+	<!-- end of trips section -->
+
+	<!-- places section -->
+	{{ include('home/pages/home_places.html.twig',{'places': places}) }}
+	<!-- end of places section -->
+
+	<!-- team section -->
+		<section class="team center"> <div class="section-header">
+			<p class="section-info">we're offering these popular services</p>
+			<h1 class="section-title">intelligent team members</h1>
+			<div class="section-line"></div>
+		</div>
+		<div class="flexbox-parent">
+			<article class="single-team flexbox-child">
+				<div class="team-img">
+					<img src="{{ asset('./img/p.jpg') }}" alt="">
+				</div>
+				<div class="team-info">
+					<p class="title">randy weaver</p>
+					<p class="subtitle">Lorem, ipsum dolor.</p>
+				</div>
+			</article>
+			<article class="single-team flexbox-child">
+				<div class="team-img">
+					<img src="{{ asset('./img/pp.jpg') }}" alt="">
+				</div>
+				<div class="team-info">
+					<p class="title">randy weaver</p>
+					<p class="subtitle">Lorem, ipsum dolor.</p>
+				</div>
+			</article>
+			<article class="single-team flexbox-child">
+				<div class="team-img">
+					<img src="{{ asset('./img/ppp.jpg') }}" alt="">
+				</div>
+				<div class="team-info">
+					<p class="title">randy weaver</p>
+					<p class="subtitle">Lorem, ipsum dolor.</p>
+				</div>
+			</article>
+
+		</div>
+	</section>
+	<!-- end of team section -->
+
+	<!-- subscribe section -->
+	<section class="subscribe">
+		<div class="sub-info">
+			<h1 class="section-title">Subscribe for our Newsletter</h1>
+			<p class="black-subtitle">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+			<form class="submit">
+				<input type="email" placeholder="Enter Email Address">
+				<button class="sub-btn">subscribe</button>
+			</form>
+		</div>
+		<img class="book-img" src="{{ asset('./img/cta-img2.png') }}" alt=""/>
+	</section>
+	<!-- end of subscribe section -->
+
+	<!-- posts section -->
+		{{ include('home/pages/home_blog.html.twig',{'blogs': blogs})}}
+
+{% endblock %}

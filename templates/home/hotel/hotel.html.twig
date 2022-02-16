@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotels
+{% endblock %}
+
+{% block banner %}
+	<div class="banner">
+		<h3 class="banner-info">plan a trip to santorni village</h3>
+		<h1 class="banner-title">Taxa Hotels</h1>
+	</div>
+{% endblock  %}
+{% block body %}
+
+	<div class="container d-flex justify-content-center">
+		<div class="row">
+			{% for hotel in hotels %}
+
+				<article class="flexbox-child single-trip">
+					<div class="img-container">
+						<img src="{{ asset('./hotel/' ~ hotel.image) }}" class="trips-img" alt=""/>
+					</div>
+					<div class="info">
+						<div class="single-info">
+							<p class="card-text">
+								<i class="fa fa-map-marker marker"></i>
+								{{hotel.location}}</p>
+
+
+						</div>
+
+					</div>
+					<p class="title">
+						{{hotel.name}}</p>
+					<p class="subtitle">
+						{{hotel.description}}
+					</p>
+					<p class="card-text">
+						<i class="fa fa-star star-rating"></i>
+						<i class="fa fa-star star-rating"></i>
+						<i class="fa fa-star star-rating"></i>
+						<i class="fa fa-star star-rating"></i>
+					</p>
+
+					<hr>
+					<div>
+										
+
+						<a href="{{path('place_go',{id: hotel.id})}}" style="background-color:white;">
+							<button class="btn btn-primary">Trips</button>
+						</a>
+					</div>
+				</article>
+
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

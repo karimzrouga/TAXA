@@ -1,0 +1,64 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}Log in!{% endblock %}
+	{% block stylesheets %}
+					<link rel="stylesheet" href="{{ asset('./login/style.css') }}"/>
+                   <link rel="stylesheet" href="{{ asset('./login/css/bootstrap.min.css') }}"/>
+                   <link rel="stylesheet" href="{{ asset('./login/css/style.css') }}"/>
+
+		{% endblock %}
+{% block banner %} {% endblock %}
+{% block body %}
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('./bg_1.jpg');"></div>
+    
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+
+        <div class="row align-items-center justify-content-center">
+
+          <div class="col-md-7">
+
+            <div class="mb-4">
+
+              <h3>Sign In</h3>
+            </div>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+<a class="single-link" href="{{path('app_register')}}">  Not a user? Sign up</a>
+
+  
+</form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    
+  </div>
+{% endblock %}

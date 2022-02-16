@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="{{'assets/css/bootstrap/bootstrap.css'}}"/>
+	<link rel="stylesheet" href="{{'assets/css/animate.css'}}"/>
+
+
+	<link rel="stylesheet" href="{{ asset('./css/style.css') }}"/>
+
+	<link rel="stylesheet" href="{{asset('./assets/css/style.css')}}"/>
+{% endblock %}
+{% block banner %}{% endblock  %}
+
+{% block body %}
+
+	<section class="probootstrap_section bg-light" id="section-contact">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-6 probootstrap-animate">
+					<p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="probootstrap-contact-details">
+								<li>
+									<span class="text-uppercase">
+										<span class="ion-paper-airplane"></span>
+										Email</span>
+									you_mail@gmail.com
+								</li>
+								<li>
+									<span class="text-uppercase">
+										<span class="ion-ios-telephone"></span>
+										Phone</span>
+									+30 976 1382 9921
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<ul class="probootstrap-contact-details">
+								<li>
+									<span class="text-uppercase">
+										<span class="ion-ios-telephone"></span>
+										Fax</span>
+									+30 976 1382 9922
+								</li>
+								<li>
+									<span class="text-uppercase">
+										<span class="ion-location"></span>
+										Address</span>
+									San Francisco, CA
+									<br>
+									4th Floor8 Lower
+									<br>
+									San Francisco street, M1 50F
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6  probootstrap-animate">
+					{{ form_start(form) }}
+
+
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="fname" class="sr-only sr-only-focusable">First Name</label>
+								{{ form_row(form.fname) }}
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="lname" class="sr-only sr-only-focusable">Last Name</label>
+								{{ form_row(form.lname) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						{{ form_row(form.email) }}
+					</div>
+					<div class="form-group">
+					
+						{{ form_row(form.message) }}
+					</div>
+					<div class="form-group">
+						{{ form_widget(form.save, { 'label': 'Send Message' }) }}
+					</div>
+
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- END section -->
+
+
+	<script src="assets/js/jquery.min.js"></script>
+
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+
+	<script src="assets/js/select2.min.js"></script>
+
+	<script src="assets/js/main.js"></script>
+</body>{% endblock %}

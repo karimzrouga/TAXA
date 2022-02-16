@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adventure index{% endblock %}
+
+{% block body %}
+    <h1>Adventure index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adventure in adventures %}
+            <tr>
+                <td>{{ adventure.id }}</td>
+                <td>{{ adventure.titre }}</td>
+                <td>{{ adventure.description }}</td>
+                <td>{{ adventure.image }}</td>
+                <td>{{ adventure.prix }}</td>
+                <td>{{ adventure.date ? adventure.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('adventure_show', {'id': adventure.id}) }}">show</a>
+                    <a href="{{ path('adventure_edit', {'id': adventure.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('adventure_new') }}">Create new</a>
+{% endblock %}

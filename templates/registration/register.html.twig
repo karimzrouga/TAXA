@@ -1,0 +1,82 @@
+
+{% extends 'base.html.twig' %}
+	{% block stylesheets %}
+					<link rel="stylesheet" href="{{ asset('./login/style.css') }}"/>
+                   <link rel="stylesheet" href="{{ asset('./login/css/bootstrap.min.css') }}"/>
+                   <link rel="stylesheet" href="{{ asset('./login/css/style.css') }}"/>
+
+		{% endblock %}
+{% block banner %} {% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <h1>Register</h1>
+ <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('./bg_1.jpg');"></div>
+    
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+
+        <div class="row align-items-center justify-content-center">
+
+          <div class="col-md-7">
+
+            <div class="mb-4">
+
+              <h3>Sign Up</h3>
+            </div>
+
+         
+              {{ form_start(registrationForm) }}
+              
+                {{ form_row(registrationForm.fullname) }}
+            
+          
+                {{ form_row(registrationForm.username) }}
+             
+                {{ form_row(registrationForm.email) }}
+            
+                {{ form_row(registrationForm.adresse) }}
+            
+             
+                {{ form_row(registrationForm.plainPassword, {
+                  label: 'Password'
+              }) }}
+          
+              
+                  {{ form_row(registrationForm.agreeTerms) }}
+               
+               
+
+              <button type="submit" class="btn btn-primary btn-xs">Register</button>
+                      <a class="single-link" href="{{path('app_login')}}">Already a user?  Sign in</a>
+
+              <span class="d-block text-center my-4 text-muted">&mdash; or &mdash;</span>
+              
+              <div class="social-login">
+                <a href="#" class="facebook btn d-flex justify-content-center align-items-center">
+                  <span class="icon-facebook mr-3"></span> Login with Facebook
+                </a>
+                <a href="#" class="twitter btn d-flex justify-content-center align-items-center">
+                  <span class="icon-twitter mr-3"></span> Login with  Twitter
+                </a>
+                <a href="#" class="google btn d-flex justify-content-center align-items-center">
+                  <span class="icon-google mr-3"></span> Login with  Google
+                </a>
+              </div>
+              {{ form_end(registrationForm) }}
+        
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    
+  </div>
+    
+{% endblock %}

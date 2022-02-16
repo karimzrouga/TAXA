@@ -1,0 +1,26 @@
+<section class="services center">
+		<div class="section-header">
+			<p class="section-info">we're offering these popular services</p>
+			<h1 class="section-title">getting adveture with services</h1>
+			<div class="section-line"></div>
+		</div>
+		<div class="flexbox-parent">
+		
+			 {% for adv in adventure |slice(0, 3) %}
+			<article class="flexbox-child single-service">
+				<p class="title">{{adv.titre}}</p>
+			
+				
+				<img src="{{ asset('./img/' ~ adv.image) }}"class="services-img" alt=""/>
+					<p class="subtitle">
+					{{adv.description}}
+				</p>
+				<a href="{{path('advreservation_detail',{id: adv.id,type:'adv' })}}">Participer</a>
+
+				<a href="{{path('adv_detail',{id: adv.id})}}">read more</a>
+
+			</article>
+    {% endfor %}
+		</div>
+	</section>
+	<!-- end of services section -->
